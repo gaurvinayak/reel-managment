@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Reel DM Manager (companion)",
+  "version": "0.1.0",
+  "description": "Reads comments on your Instagram reel and DMs commenters you haven't replied to, using your own logged-in session.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "http://localhost/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Reel DM Manager"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
